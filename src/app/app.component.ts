@@ -1,5 +1,5 @@
+import { NgOneTapService } from './../../projects/ng-google-one-tap/src/lib/ng-google-one-tap.service';
 import { Component } from '@angular/core';
-import { NgGoogleOneTapService } from 'projects/ng-google-one-tap/src/public-api';
 
 @Component({
     selector: 'app-root',
@@ -9,7 +9,7 @@ import { NgGoogleOneTapService } from 'projects/ng-google-one-tap/src/public-api
 export class AppComponent {
     title = 'google-one-tap';
     constructor(
-        private onetap: NgGoogleOneTapService
+        private onetap: NgOneTapService
     ) { }
 
     ngOnInit() {

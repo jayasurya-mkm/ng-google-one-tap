@@ -7,7 +7,7 @@ import { PromptMomentNotification } from './model/promptmoment.model';
 
 declare var window: any;
 @Injectable()
-export class NgGoogleOneTapService {
+export class NgOneTapService {
 
     private _promtMoment = new Subject<PromptMomentNotification>();
     private _credentialResponse = new Subject<credentialRes>();
@@ -65,6 +65,6 @@ export class NgGoogleOneTapService {
     }
 
     cancelTheTap() {
-        window.google.accounts.id.cancel()
+        window.google.accounts.id.cancel();
     }
 }

@@ -14,7 +14,7 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     NgGoogleOneTapModule.config(
       {
-        client_id: '845404307552-d5l9gdh9pc1332afcb6la7usp65mg57e.apps.googleusercontent.com',
+        client_id: 'testId',
         disale_force_cooldowntime: true,
         debugging_by_oauth2_api: true,
         select_by: "tap2",

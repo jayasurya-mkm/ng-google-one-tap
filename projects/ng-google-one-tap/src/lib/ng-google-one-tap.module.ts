@@ -1,12 +1,9 @@
-import { DOCUMENT } from '@angular/common';
-import { Inject, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { configuration } from './model/tap.model';
 import { NgGoogleOneTapComponent } from './ng-google-one-tap.component';
-import { NgGoogleOneTapService } from './ng-google-one-tap.service';
+import { NgOneTapService } from './ng-google-one-tap.service';
 import { CONFIGURATION } from './toke';
 
-declare var google: any;
-declare var window: any;
 
 @NgModule({
     declarations: [
@@ -31,7 +28,8 @@ export class NgGoogleOneTapModule {
             ngModule: NgGoogleOneTapModule,
             providers: [
                 {provide: CONFIGURATION, useValue: config},
-                NgGoogleOneTapService
+                NgOneTapService
+                // {provide: NgOneTapService, useClass: NgOneTapService}
             ]
         }
     }
