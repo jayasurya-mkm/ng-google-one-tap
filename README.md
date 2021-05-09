@@ -79,17 +79,12 @@ export class DemoComponent implements OnInit {
 | Name                  | Type    | Required |                                     Description                                      |
 | --------------------- | ------- | :------: | :----------------------------------------------------------------------------------: |
 | client_id             | String  |   true   |                             Your application's client ID                             |
-| disable_exponential_cooldowntime | Boolean  |   false   |             when Close X one tap promt it's take reset/reshowing take some times this called Exponential cooldown. you can disable that using this option **Note: Recommended for development mode. If you want to use this feature in prod before pls check with official doc. link below.                   |
-
-| authvalidate_by_googleapis   | Boolean  |  false   |          Validate the user whitout backend-server validation by using google provide APIs. **Note: Recommended for development mode. If pro mode need to validate JWT one tap retured crdentials from backend-server by using google-auth-library   |
-
+| disable_exponential_cooldowntime | Boolean  |   false   |             when Close X one tap promt it's take reset/reshowing take some times this called Exponential cooldown. you can disable that using this option **Note: Recommended for development mode. If you want to use this feature in prod before pls check with official doc. link below.**                  |
+| authvalidate_by_googleapis   | Boolean  |  false   |          Validate the user whitout backend-server validation by using google provide APIs. **Note: Recommended for development mode. If pro mode need to validate JWT one tap retured crdentials from backend-server by using google-auth-library**   |
 | auto_select           | Boolean |  false   |                             Enables automatic selection.                             | null |
-
-| cancel_on_tap_outside | Boolean |  true   |              Cancels the prompt if the user clicks outside the prompt.               |
+| cancel_on_tap_outside | Boolean |  true   |              Cancels the prompt if the user clicks outside the prompt.               
 | context               | String  |  false   |             The title and words in the One Tap prompt     |
 | prompt_parent_id               | String  |  false   |        The DOM ID of the One Tap prompt container element    |
-
-
 | nonce               | String  |  false   |             A random string for ID tokens     |
 
 
