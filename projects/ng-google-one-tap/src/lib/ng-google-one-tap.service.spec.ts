@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { NgGoogleOneTapService } from './ng-google-one-tap.service';
+import { NgOneTapService } from './ng-google-one-tap.service';
 
 describe('NgGoogleOneTapService', () => {
-  let service: NgGoogleOneTapService;
+  let service: NgOneTapService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(NgGoogleOneTapService);
+    service = TestBed.inject(NgOneTapService);
   });
 
   it('should be created', () => {

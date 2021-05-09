@@ -1,13 +1,16 @@
 {
   "name": "google-one-tap",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
+    "postinstall": "ngcc",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "lib:build": "ng build ng-google-one-tap --prod && npm run lib:pack",
+    "lib:pack": "cd dist/ng-google-one-tap && npm pack"
   },
   "private": true,
   "dependencies": {

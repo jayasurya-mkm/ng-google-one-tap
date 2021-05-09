@@ -3,5 +3,4 @@
  */
 
 export * from './lib/ng-google-one-tap.service';
-export * from './lib/ng-google-one-tap.component';
 export * from './lib/ng-google-one-tap.module';

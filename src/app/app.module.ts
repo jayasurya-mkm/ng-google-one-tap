@@ -1,6 +1,6 @@
-import { NgGoogleOneTapModule } from './../../projects/ng-google-one-tap/src/lib/ng-google-one-tap.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgGoogleOneTapModule } from 'ng-google-one-tap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,10 +14,9 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     NgGoogleOneTapModule.config(
       {
-        client_id: 'testId',
-        disale_force_cooldowntime: true,
-        debugging_by_oauth2_api: true,
-        select_by: "tap2",
+        client_id: 'id',
+        disable_exponential_cooldowntime: true,
+        authvalidate_by_googleapis: true
       })
   ],
   providers: [],

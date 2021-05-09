@@ -9,33 +9,33 @@ export interface configuration extends customConfig {
     state_cookie_domain?: string;
     ux_mode?: string;
     allowed_parent_origin?: string;
-    [key: string]: any;
-}
-
-export interface SocialUser {
-    provider: string;
-    id: string;
-    email: string;
-    name: string;
-    photoUrl: string;
-    firstName: string;
-    lastName: string;
-    authToken: string;
-
-    idToken: string; // Reference https://developers.google.com/identity/sign-in/web/backend-auth
-    authorizationCode: string; // Reference https://developers.google.com/identity/sign-in/web/reference#googleauthgrantofflineaccessoptions
-
-    response: any;
 }
 
 export interface customConfig {
-    disale_force_cooldowntime?: boolean;
-    authvalidation_from_ngtap?: boolean;
-    debugging_by_oauth2_api?: boolean;
+    disable_exponential_cooldowntime?: boolean;
+    authvalidate_by_googleapis?: boolean;
 }
 
 export interface credentialRes {
     client_id: string;
     credential: string;
     select_by: string;
+}
+
+export interface UserInfo {
+    iss: string;
+    nbf: number;
+    aud: string;
+    sub: string;
+    hd: string;
+    email: string;
+    email_verified: boolean;
+    azp: string;
+    name: string;
+    picture: string;
+    given_name: string;
+    family_name: string;
+    iat: number;
+    exp: number;
+    jti: string;
 }

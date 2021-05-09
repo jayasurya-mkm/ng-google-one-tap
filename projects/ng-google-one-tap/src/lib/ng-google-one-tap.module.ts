@@ -1,18 +1,15 @@
 import { NgModule } from '@angular/core';
 import { configuration } from './model/tap.model';
-import { NgGoogleOneTapComponent } from './ng-google-one-tap.component';
 import { NgOneTapService } from './ng-google-one-tap.service';
 import { CONFIGURATION } from './toke';
 
 
 @NgModule({
     declarations: [
-        NgGoogleOneTapComponent
     ],
     imports: [
     ],
     exports: [
-        NgGoogleOneTapComponent
     ]
 })
 
@@ -29,7 +26,6 @@ export class NgGoogleOneTapModule {
             providers: [
                 {provide: CONFIGURATION, useValue: config},
                 NgOneTapService
-                // {provide: NgOneTapService, useClass: NgOneTapService}
             ]
         }
     }

@@ -1,5 +1,5 @@
-import { NgOneTapService } from './../../projects/ng-google-one-tap/src/lib/ng-google-one-tap.service';
 import { Component } from '@angular/core';
+import { NgOneTapService } from 'ng-google-one-tap';
 
 @Component({
     selector: 'app-root',
@@ -8,17 +8,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
     title = 'google-one-tap';
-    constructor(
-        private onetap: NgOneTapService
-    ) { }
+    constructor(private onetap: NgOneTapService) { }
 
     ngOnInit() {
         this.onetap.tapInitialize();
-        this.onetap.credentialResponse.subscribe(res => {
+        this.onetap.oneTapCredentialResponse.subscribe(res => {
             console.log(res);
         });
-        this.onetap.oauth2TokenInfo.subscribe(res => {
+        this.onetap.authUserResponse.subscribe(res => {
             console.log(res);
         });
+        this.onetap.promtMoment.subscribe(res => {
+            console.log(res);
+        })
     }
 }
