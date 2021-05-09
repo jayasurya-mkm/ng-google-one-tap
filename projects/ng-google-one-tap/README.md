@@ -1,24 +1,66 @@
-# NgGoogleOneTap
+# GoogleOneTap
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.11.
+Google one tap for Angular application.
 
-## Code scaffolding
+## Getting started
 
-Run `ng generate component component-name --project ng-google-one-tap` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ng-google-one-tap`.
-> Note: Don't forget to add `--project ng-google-one-tap` or else it will be added to the default project in your `angular.json` file. 
+### Install via npm
 
-## Build
+```sh
+npm i ng-google-one-tap
+```
 
-Run `ng build ng-google-one-tap` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Import the module
 
-## Publishing
+In your AppModule, import the NgGoogleOneTapModule
 
-After building your library with `ng build ng-google-one-tap`, go to the dist folder `cd dist/ng-google-one-tap` and run `npm publish`.
+import { NgGoogleOneTapModule } from 'ng-google-one-tap';
 
-## Running unit tests
+@NgModule({
+declarations: [
+...
+],
+imports: [
+...
+NgGoogleOneTapModule.config(
+{
+client_id: 'App_client_id',
+})
+],
+providers: [],
+bootstrap: [...]
+})
+export class AppModule { }
 
-Run `ng test ng-google-one-tap` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### NgOneTap service
 
-## Further help
+```javascript
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+import { SocialAuthService } from "angularx-social-login";
+import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
+
+@Component({
+  selector: 'app-demo',
+  templateUrl: './demo.component.html',
+  styleUrls: ['./demo.component.css']
+})
+export class DemoComponent implements OnInit {
+
+  constructor(private oneTapService: NgOneTapService) { }
+
+   ngOnInit() {
+        this.onetap.tapInitialize(); //Initialize OneTap
+        this.onetap.promtMoment.subscribe(res => {  // Subscribe the Tap Moment.
+            console.log(res);
+        });
+        this.onetap.oneTapCredentialResponse.subscribe(res => { // After continue with account one tap JWT credentials response.
+            console.log(res);
+        });
+        this.onetap.authUserResponse.subscribe(res => {  // Use Auth validation by using google OAuth2 apis. Note this one for testing and debugging purpose.
+            console.log(res);
+        });
+
+   }
+
+}
+```

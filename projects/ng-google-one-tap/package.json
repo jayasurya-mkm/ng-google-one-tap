@@ -1,11 +1,35 @@
 {
   "name": "ng-google-one-tap",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "peerDependencies": {
     "@angular/common": "^11.2.11",
     "@angular/core": "^11.2.11"
   },
   "dependencies": {
     "tslib": "^2.0.0"
-  }
+  },
+  "description": "Google one tap signin for Angular 9+",
+  "keywords": [
+    "angular",
+    "angular4",
+    "angular8",
+    "angular9",
+    "angular10",
+    "ng-google-onetap",
+    "angular-google-onetap",
+    "google-onetap", "ng-onetap", "onetap-signin"
+  ],
+  "author": {
+    "name": "Jayasurya",
+    "email": "jayasuryamkm@gmail.com"
+  },
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cooljayasurya/ng-google-one-tap.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cooljayasurya/ng-google-one-tap/issues"
+  },
+  "homepage": "https://github.com/cooljayasurya/ng-google-one-tap#readme"
 }

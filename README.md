@@ -13,7 +13,7 @@ npm i ng-google-one-tap
 ### Import the module
 
 In your AppModule, import the NgGoogleOneTapModule
-
+```javascript
 import { NgGoogleOneTapModule } from 'ng-google-one-tap';
 
 @NgModule({
@@ -31,6 +31,7 @@ providers: [],
 bootstrap: [...]
 })
 export class AppModule { }
+```
 
 ### NgOneTap service
 

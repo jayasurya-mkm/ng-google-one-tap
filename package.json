@@ -10,7 +10,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "lib:build": "ng build ng-google-one-tap --prod && npm run lib:pack",
-    "lib:pack": "cd dist/ng-google-one-tap && npm pack"
+    "lib:pack": "cd dist/ng-google-one-tap && npm pack",
+    "lib:publish": "npm login && npm run lib:build && cd dist/ng-google-one-tap && npm publish"
   },
   "private": true,
   "dependencies": {
