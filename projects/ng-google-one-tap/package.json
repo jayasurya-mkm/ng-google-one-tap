@@ -23,7 +23,7 @@
     "name": "Jayasurya",
     "email": "jayasuryamkm@gmail.com"
   },
-  "license": "ISC",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cooljayasurya/ng-google-one-tap.git"

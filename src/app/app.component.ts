@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { NgOneTapService } from 'ng-google-one-tap';
 
 @Component({
@@ -7,8 +7,8 @@ import { NgOneTapService } from 'ng-google-one-tap';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-    title = 'google-one-tap';
-    constructor(private onetap: NgOneTapService) { }
+    userdetails: any;
+    constructor(private onetap: NgOneTapService, private chg: ChangeDetectorRef) { }
 
     ngOnInit() {
         this.onetap.tapInitialize();
@@ -16,10 +16,18 @@ export class AppComponent {
             console.log(res);
         });
         this.onetap.authUserResponse.subscribe(res => {
-            console.log(res);
+            this.userdetails = res;
+            this.chg.detectChanges();
         });
         this.onetap.promtMoment.subscribe(res => {
-            console.log(res);
+           res.getDismissedReason();
+           res.getMomentType();
+           res.getNotDisplayedReason();
+           res.getSkippedReason();
+           res.isDismissedMoment();
+           res.isDisplayed();
+           res.isNotDisplayed();
+           res.isSkippedMoment();
         })
     }
 }
