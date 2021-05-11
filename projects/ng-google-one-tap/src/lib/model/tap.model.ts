@@ -11,7 +11,7 @@ export interface configuration extends customConfig {
     allowed_parent_origin?: string;
 }
 
-export interface customConfig {
+interface customConfig {
     disable_exponential_cooldowntime?: boolean;
     authvalidate_by_googleapis?: boolean;
 }

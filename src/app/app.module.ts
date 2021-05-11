@@ -16,7 +16,7 @@ import { AppComponent } from './app.component';
       {
         client_id: 'id',
         disable_exponential_cooldowntime: true,
-        authvalidate_by_googleapis: true
+        authvalidate_by_googleapis: true,
       })
   ],
   providers: [],

@@ -51,7 +51,7 @@ export class DemoComponent implements OnInit {
   constructor(private oneTapService: NgOneTapService) { }
 
    ngOnInit() {
-        this.onetap.tapInitialize(); //Initialize OneTap
+        this.onetap.tapInitialize(); //Initialize OneTap, At intial time you can pass config  like this.onetap.tapInitialize(conif) here config is optional.
         this.onetap.promtMoment.subscribe(res => {  // Subscribe the Tap Moment. following response options all have self explanatory. If you want more info pls refer official document below attached link.
            res.getDismissedReason(); 
            res.getMomentType();
@@ -62,14 +62,18 @@ export class DemoComponent implements OnInit {
            res.isNotDisplayed();
            res.isSkippedMoment();
         });
-        this.onetap.oneTapCredentialResponse.subscribe(res => { // After continue with account one tap JWT credentials response.
+        this.onetap.oneTapCredentialResponse.subscribe(res => { // After continue with one tap JWT credentials response.
             console.log(res);
         });
-        this.onetap.authUserResponse.subscribe(res => {  // Use Auth validation by using google OAuth2 apis. Note this one for testing and debugging purpose. the response have user details all.
+        this.onetap.authUserResponse.subscribe(res => {  // Use Auth validation by using google OAuth2 apis. Note: this one for testing and debugging purpose.
             this.userdetails = res;
         });
 
    }
+
+    tapcancel() {
+        this.onetap.cancelTheTap();
+    }
 
 }
 ```
@@ -82,7 +86,7 @@ export class DemoComponent implements OnInit {
 | disable_exponential_cooldowntime | Boolean  |   false   |             when Close X one tap promt it's take reset/reshowing take some times this called Exponential cooldown. you can disable that using this option **Note: Recommended for development mode. If you want to use this feature in prod before pls check with official doc. link below.**                  |
 | authvalidate_by_googleapis   | Boolean  |  false   |          Validate the user whitout backend-server validation by using google provide APIs. **Note: Recommended for development mode. If pro mode need to validate JWT one tap retured crdentials from backend-server by using google-auth-library**   |
 | auto_select           | Boolean |  false   |                             Enables automatic selection.                             | null |
-| cancel_on_tap_outside | Boolean |  true   |              Cancels the prompt if the user clicks outside the prompt.               
+| cancel_on_tap_outside | Boolean |  false   |              Cancels the prompt if the user clicks outside the prompt.               
 | context               | String  |  false   |             The title and words in the One Tap prompt     |
 | prompt_parent_id               | String  |  false   |        The DOM ID of the One Tap prompt container element    |
 | nonce               | String  |  false   |             A random string for ID tokens     |

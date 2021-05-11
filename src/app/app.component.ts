@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { NgOneTapService } from 'ng-google-one-tap';
+// import { NgOneTapService } from 'ng-google-one-tap';
 
 @Component({
     selector: 'app-root',
@@ -17,9 +18,9 @@ export class AppComponent {
         });
         this.onetap.authUserResponse.subscribe(res => {
             this.userdetails = res;
-            this.chg.detectChanges();
         });
         this.onetap.promtMoment.subscribe(res => {
+            console.log(res);
            res.getDismissedReason();
            res.getMomentType();
            res.getNotDisplayedReason();
@@ -29,5 +30,13 @@ export class AppComponent {
            res.isNotDisplayed();
            res.isSkippedMoment();
         })
+    }
+
+    init() {
+        this.onetap.tapInitialize();
+    }
+
+    tapcancel() {
+        this.onetap.cancelTheTap()
     }
 }

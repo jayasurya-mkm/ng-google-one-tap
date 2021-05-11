@@ -1,5 +1,5 @@
 import { configuration, credentialRes, UserInfo } from './model/tap.model';
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { Inject } from '@angular/core';
 import { CONFIGURATION } from './toke';
 import { Subject } from 'rxjs';
@@ -25,16 +25,22 @@ export class NgOneTapService {
         return this._authUserResponse.asObservable();
     }
 
-    constructor(@Inject(CONFIGURATION) private envConfig: configuration) { }
+    constructor(@Inject(CONFIGURATION) private envConfig: configuration, private ngZone: NgZone) { }
 
     tapInitialize(config?: configuration) {
-        window.onGoogleLibraryLoad = () => {
-            const conf = {...this.envConfig, ...config };
-            if (!!conf?.disable_exponential_cooldowntime && !!document?.cookie?.match(new RegExp('(^| )' + "g_state" + '=([^;]+)'))) {
-                document.cookie = "g_state=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-            }
-            window.google.accounts.id.initialize({
-                ...conf, callback: (auth) => {
+        window.onload = () => {
+            this.tapRender(config);
+        }
+        if (document.readyState == 'complete') {
+            this.tapRender(config);
+        }
+    }
+
+    private tapRender(config) {
+        const conf = {...this.envConfig, ...config };
+        window.google.accounts.id.initialize({
+            ...conf, callback: (auth) => {
+                this.ngZone.run(() => {
                     if (!!conf.authvalidate_by_googleapis) {
                         const http = new XMLHttpRequest();
                         const url = `https://oauth2.googleapis.com/tokeninfo?id_token=${auth.credential}`;
@@ -47,12 +53,12 @@ export class NgOneTapService {
                         };
                     }
                     this._oneTapCredentialResponse.next(auth);
-                }
-            });
-            window.google.accounts.id.prompt((pmt) => {
-                this._promtMoment.next(pmt);
-            });
-        }
+                });
+            }
+        });
+        window.google.accounts.id.prompt((pmt) => {
+            this._promtMoment.next(pmt);
+        });
     }
 
     signOut() {
