@@ -90,9 +90,9 @@ export class DemoComponent implements OnInit {
 
 ## Resource
 
-1.Exponential cooldown - https://developers.google.com/identity/gsi/web/guides/features#:~:text=Exponential%20cooldown,-If%20the%20user&text=A%20user%20closes%20One%20Tap,for%20a%20period%20of%20time.&text=The%20cooldown%20status%20resets%20after%20a%20successful%20One%20Tap%20sign%2Din
-2.Google One Tap Implementation doc by google - https://developers.google.com/identity/gsi/web/reference/js-reference#nonce
-3.Google library and API - https://developers.google.com/identity/sign-in/web/backend-auth#using-a-google-api-client-library.
+1. [Exponential cooldown](https://developers.google.com/identity/gsi/web/guides/features#:~:text=Exponential%20cooldown,-If%20the%20user&text=A%20user%20closes%20One%20Tap,for%20a%20period%20of%20time.&text=The%20cooldown%20status%20resets%20after%20a%20successful%20One%20Tap%20sign%2Din)<br>
+2. [Google One Tap Implementation doc by google](https://developers.google.com/identity/gsi/web/reference/js-reference#nonce)<br>
+3. [Google library and API](https://developers.google.com/identity/sign-in/web/backend-auth#using-a-google-api-client-library.)
 
 
 ## Server

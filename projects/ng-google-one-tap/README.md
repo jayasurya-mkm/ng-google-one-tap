@@ -47,6 +47,7 @@ import { NgOneTapService } from 'ng-google-one-tap';
 })
 export class DemoComponent implements OnInit {
 
+  userdetails;
   constructor(private oneTapService: NgOneTapService) { }
 
    ngOnInit() {
@@ -65,7 +66,7 @@ export class DemoComponent implements OnInit {
             console.log(res);
         });
         this.onetap.authUserResponse.subscribe(res => {  // Use Auth validation by using google OAuth2 apis. Note this one for testing and debugging purpose. the response have user details all.
-            console.log(res);
+            this.userdetails = res;
         });
 
    }
@@ -78,25 +79,20 @@ export class DemoComponent implements OnInit {
 | Name                  | Type    | Required |                                     Description                                      |
 | --------------------- | ------- | :------: | :----------------------------------------------------------------------------------: |
 | client_id             | String  |   true   |                             Your application's client ID                             |
-| disable_exponential_cooldowntime | Boolean  |   false   |             when Close X one tap promt it's take reset/reshowing take some times this called Exponential cooldown. you can disable that using this option **Note: Recommended for development mode. If you want to use this feature in prod before pls check with official doc. link below.                   |
-
-| authvalidate_by_googleapis   | Boolean  |  false   |          Validate the user whitout backend-server validation by using google provide APIs. **Note: Recommended for development mode. If pro mode need to validate JWT one tap retured crdentials from backend-server by using google-auth-library   |
-
+| disable_exponential_cooldowntime | Boolean  |   false   |             when Close X one tap promt it's take reset/reshowing take some times this called Exponential cooldown. you can disable that using this option **Note: Recommended for development mode. If you want to use this feature in prod before pls check with official doc. link below.**                  |
+| authvalidate_by_googleapis   | Boolean  |  false   |          Validate the user whitout backend-server validation by using google provide APIs. **Note: Recommended for development mode. If pro mode need to validate JWT one tap retured crdentials from backend-server by using google-auth-library**   |
 | auto_select           | Boolean |  false   |                             Enables automatic selection.                             | null |
-
-| cancel_on_tap_outside | Boolean |  true   |              Cancels the prompt if the user clicks outside the prompt.               |
+| cancel_on_tap_outside | Boolean |  true   |              Cancels the prompt if the user clicks outside the prompt.               
 | context               | String  |  false   |             The title and words in the One Tap prompt     |
 | prompt_parent_id               | String  |  false   |        The DOM ID of the One Tap prompt container element    |
-
-
 | nonce               | String  |  false   |             A random string for ID tokens     |
 
 
 ## Resource
 
-1.Exponential cooldown - https://developers.google.com/identity/gsi/web/guides/features#:~:text=Exponential%20cooldown,-If%20the%20user&text=A%20user%20closes%20One%20Tap,for%20a%20period%20of%20time.&text=The%20cooldown%20status%20resets%20after%20a%20successful%20One%20Tap%20sign%2Din
-2.Google One Tap Implementation doc by google - https://developers.google.com/identity/gsi/web/reference/js-reference#nonce
-3.Google library and API - https://developers.google.com/identity/sign-in/web/backend-auth#using-a-google-api-client-library.
+1. [Exponential cooldown](https://developers.google.com/identity/gsi/web/guides/features#:~:text=Exponential%20cooldown,-If%20the%20user&text=A%20user%20closes%20One%20Tap,for%20a%20period%20of%20time.&text=The%20cooldown%20status%20resets%20after%20a%20successful%20One%20Tap%20sign%2Din)<br>
+2. [Google One Tap Implementation doc by google](https://developers.google.com/identity/gsi/web/reference/js-reference#nonce)<br>
+3. [Google library and API](https://developers.google.com/identity/sign-in/web/backend-auth#using-a-google-api-client-library.)
 
 
 ## Server
