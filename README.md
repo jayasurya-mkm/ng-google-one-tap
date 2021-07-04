@@ -48,7 +48,7 @@ import { NgOneTapService } from 'ng-google-one-tap';
 export class DemoComponent implements OnInit {
 
   userdetails;
-  constructor(private oneTapService: NgOneTapService) { }
+  constructor(private onetap: NgOneTapService) { }
 
    ngOnInit() {
         this.onetap.tapInitialize(); //Initialize OneTap. At intial time you can pass config  like this.onetap.tapInitialize(conif) here config is optional.
