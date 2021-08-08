@@ -1,6 +1,6 @@
 {
   "name": "ng-google-one-tap",
-  "version": "1.1.4",
+  "version": "2.1.5",
   "peerDependencies": {
     "@angular/common": "^11.2.11",
     "@angular/core": "^11.2.11"
@@ -14,7 +14,7 @@
     "ng-google-onetap",
     "angular google onetap",
     "one tap signin angular",
-    "ng onetap", "one tap signin", "google one tap" ,"google sign in" ,"google sign up"
+    "ng onetap", "one tap signin", "google one tap" ,"google signin" ,"google signup"
   ],
   "author": {
     "name": "Jayasurya",

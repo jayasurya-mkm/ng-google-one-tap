@@ -25,7 +25,8 @@ export class NgOneTapService {
         return this._authUserResponse.asObservable();
     }
 
-    constructor(@Inject(CONFIGURATION) private envConfig: configuration, private ngZone: NgZone) { }
+    constructor(@Inject(CONFIGURATION) private envConfig: configuration,
+    private ngZone: NgZone) { }
 
     tapInitialize(config?: configuration) {
         window.onload = () => {
@@ -36,8 +37,11 @@ export class NgOneTapService {
         }
     }
 
-    private tapRender(config) {
+    private tapRender(config: configuration) {
         const conf = {...this.envConfig, ...config };
+        if (!!conf?.disable_exponential_cooldowntime) {
+            document.cookie = 'g_state' +'=;Path=/;';
+        }
         window.google.accounts.id.initialize({
             ...conf, callback: (auth) => {
                 this.ngZone.run(() => {

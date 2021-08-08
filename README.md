@@ -24,8 +24,14 @@ declarations: [
 imports: [
 ...
 NgGoogleOneTapModule.config(
-    {
+    {  //Look options table for some more avaialbe options and config here.
         client_id: 'App_client_id',
+        cancel_on_tap_outside: false,
+        authvalidate_by_googleapis: false,
+        auto_select: false,
+        disable_exponential_cooldowntime: false,
+        context: 'signup',
+        ...
     })
 ],
 providers: [],
@@ -51,7 +57,7 @@ export class DemoComponent implements OnInit {
   constructor(private onetap: NgOneTapService) { }
 
    ngOnInit() {
-        this.onetap.tapInitialize(); //Initialize OneTap. At intial time you can pass config  like this.onetap.tapInitialize(conif) here config is optional.
+        this.onetap.tapInitialize(); //Initialize OneTap, At intial time you can pass config  like this.onetap.tapInitialize(conif) here config is optional.
         this.onetap.promtMoment.subscribe(res => {  // Subscribe the Tap Moment. following response options all have self explanatory. If you want more info pls refer official document below attached link.
            res.getDismissedReason(); 
            res.getMomentType();
@@ -62,10 +68,10 @@ export class DemoComponent implements OnInit {
            res.isNotDisplayed();
            res.isSkippedMoment();
         });
-        this.onetap.oneTapCredentialResponse.subscribe(res => { // Subscribe after continue with one tap JWT credentials response.
+        this.onetap.oneTapCredentialResponse.subscribe(res => { // After continue with one tap JWT credentials response.
             console.log(res);
         });
-        this.onetap.authUserResponse.subscribe(res => {  // Use Auth validation by using google OAuth2 apis. Note this one for testing and debugging purpose.
+        this.onetap.authUserResponse.subscribe(res => {  // Use Auth validation by using google OAuth2 apis. Note: this one for testing and debugging purpose.
             this.userdetails = res;
         });
 
@@ -88,9 +94,12 @@ export class DemoComponent implements OnInit {
 | auto_select           | Boolean |  false   |                             Enables automatic selection.                             | null |
 | cancel_on_tap_outside | Boolean |  false   |              Cancels the prompt if the user clicks outside the prompt.               
 | context               | String  |  false   |             The title and words in the One Tap prompt     |
-| prompt_parent_id               | String  |  false   |        The DOM ID of the One Tap prompt container element    |
+| prompt_parent_id      | String  |  false   |        The DOM ID of the One Tap prompt container element    |
+| login_uri             | String  |  false   |    The URL of your login endpoint. The Sign In With Google button redirect UX mode uses this attribute.    |
 | nonce               | String  |  false   |             A random string for ID tokens     |
-
+| allowed_parent_origin               | String  |  false   |    The origins that are allowed to embed the intermediate iframe. One Tap will run in the intermediate iframe mode if this field presents. eg allowed_parent_origin: "https://example.com".    |
+| state_cookie_domain               | String  |  false   |     If you need to call One Tap in the parent domain and its subdomains, pass the parent domain to this field so that a single shared cookie is used     |
+| ux_mode               | String  |  false   |     The Sign In With Google button UX flow   |
 
 ## Resource
 

@@ -5,7 +5,7 @@ export interface configuration extends customConfig {
     cancel_on_tap_outside?: boolean;
     prompt_parent_id?: string;
     nonce?: string;
-    context?: string;
+    context?:  'signin' | 'signup' | 'use';
     state_cookie_domain?: string;
     ux_mode?: string;
     allowed_parent_origin?: string;

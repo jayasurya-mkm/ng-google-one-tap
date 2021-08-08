@@ -24,8 +24,14 @@ declarations: [
 imports: [
 ...
 NgGoogleOneTapModule.config(
-    {
+    {  //Look options table for some more avaialbe options and config here.
         client_id: 'App_client_id',
+        cancel_on_tap_outside: false,
+        authvalidate_by_googleapis: false,
+        auto_select: false,
+        disable_exponential_cooldowntime: false,
+        context: 'signup',
+        ...
     })
 ],
 providers: [],
@@ -88,9 +94,12 @@ export class DemoComponent implements OnInit {
 | auto_select           | Boolean |  false   |                             Enables automatic selection.                             | null |
 | cancel_on_tap_outside | Boolean |  false   |              Cancels the prompt if the user clicks outside the prompt.               
 | context               | String  |  false   |             The title and words in the One Tap prompt     |
-| prompt_parent_id               | String  |  false   |        The DOM ID of the One Tap prompt container element    |
+| prompt_parent_id      | String  |  false   |        The DOM ID of the One Tap prompt container element    |
+| login_uri             | String  |  false   |    The URL of your login endpoint. The Sign In With Google button redirect UX mode uses this attribute.    |
 | nonce               | String  |  false   |             A random string for ID tokens     |
-
+| allowed_parent_origin               | String  |  false   |    The origins that are allowed to embed the intermediate iframe. One Tap will run in the intermediate iframe mode if this field presents. eg allowed_parent_origin: "https://example.com".    |
+| state_cookie_domain               | String  |  false   |     If you need to call One Tap in the parent domain and its subdomains, pass the parent domain to this field so that a single shared cookie is used     |
+| ux_mode               | String  |  false   |     The Sign In With Google button UX flow   |
 
 ## Resource
 

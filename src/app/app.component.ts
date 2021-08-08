@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { NgOneTapService } from 'ng-google-one-tap';
-// import { NgOneTapService } from 'ng-google-one-tap';
+// import { NgOneTapService } from '../../projects/ng-google-one-tap/src/lib/ng-google-one-tap.service';
 
 @Component({
     selector: 'app-root',
