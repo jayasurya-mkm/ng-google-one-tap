@@ -14,7 +14,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     AppRoutingModule,
     NgGoogleOneTapModule.config( {
-      client_id: '845404307552-d5l9gdh9pc1332afcb6la7usp65mg57e.apps.googleusercontent.com',
+      client_id: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
       cancel_on_tap_outside: false,
       authvalidate_by_googleapis: true,
       auto_select: false,
