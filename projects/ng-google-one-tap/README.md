@@ -10,6 +10,9 @@ Google one tap for Angular application.
 npm i ng-google-one-tap
 ```
 
+### Version compatibility
+
+Supported from Angular 11+
 ### Import the module
 
 In your AppModule, import the NgGoogleOneTapModule
@@ -23,15 +26,15 @@ declarations: [
 ],
 imports: [
 ...
+/** Please refer to the options table for explanation **/
 NgGoogleOneTapModule.config(
-    {  //Look options table for some more avaialbe options and config here.
+    {  
         client_id: 'App_client_id',
         cancel_on_tap_outside: false,
         authvalidate_by_googleapis: false,
         auto_select: false,
         disable_exponential_cooldowntime: false,
         context: 'signup',
-        ...
     })
 ],
 providers: [],
@@ -57,8 +60,12 @@ export class DemoComponent implements OnInit {
   constructor(private oneTap: NgOneTapService) { }
 
    ngOnInit() {
-        this.oneTap.tapInitialize(); //Initialize OneTap, At intial time you can pass config  like this.oneTap.tapInitialize(conif) here config is optional.
-        this.oneTap.promtMoment.subscribe(res => {  // Subscribe the Tap Moment. following response options all have self explanatory. If you want more info pls refer official document below attached link.
+        /** Initialize OneTap, While initialing you can pass config  like this.oneTap.tapInitialize(config) here config is optional. **/
+        this.oneTap.tapInitialize();
+
+        /** Subscribe the Tap Moment. following response options all have self explanatory.
+         *  If you want more info please refer at bottom of the document attached link. **/
+        this.oneTap.promtMoment.subscribe(res => { 
            res.getDismissedReason(); 
            res.getMomentType();
            res.getNotDisplayedReason();
@@ -68,10 +75,18 @@ export class DemoComponent implements OnInit {
            res.isNotDisplayed();
            res.isSkippedMoment();
         });
-        this.oneTap.oneTapCredentialResponse.subscribe(res => { // After continue with one tap JWT credentials response.
-            console.log(res);
+
+        /** The JWT credentials will be returned as a response after completing the one tap process.  **/
+        this.oneTap.oneTapCredentialResponse.subscribe(res => {
+            /**  Response
+             * clientId: your client ID,
+             * client_id: your client ID,
+             * credential: The credential/secret key is utilized for user validation and information retrieval. Validation can be performed on the backend server/platform using the appropriate Google library. Please refer to the backend implementation details at the bottom of the document
+             **/
         });
-        this.oneTap.authUserResponse.subscribe(res => {  // Use Auth validation by using google OAuth2 apis. Note: this one for testing and debugging purpose.
+
+        /** Authentication validation can be performed using the Google OAuth2 APIs, eliminating the need for client_id validation on the backend and the retrieval of user details **/
+        this.oneTap.authUserResponse.subscribe(res => { 
             this.userDetails = res;
         });
 
@@ -89,8 +104,8 @@ export class DemoComponent implements OnInit {
 | Name                  | Type    | Required |                                     Description                                      |
 | --------------------- | ------- | :------: | :----------------------------------------------------------------------------------: |
 | client_id             | String  |   true   |                             Your application's client ID                             |
-| disable_exponential_cooldowntime | Boolean  |   false   |             when Close X one tap promt it's take reset/reshowing take some times this called Exponential cool down. you can disable that using this option **Note: Recommended for development mode. If you want to use this feature in prod before pls check with official doc. link below.**                  |
-| authvalidate_by_googleapis   | Boolean  |  false   |          Validate the user without backend-server validation by using google provide APIs. **Note: Recommended for development mode. If pro mode need to validate JWT one tap returned credentials from backend-server by using google-auth-library**   |
+| disable_exponential_cooldowntime | Boolean  |   false   |    When you close the one tap prompt by clicking the X icon, it may take some time for it to reset or reappear. This is known as an exponential cool down. You can disable this using the specified option. |
+| authvalidate_by_googleapis   | Boolean  |  false   |          Validate the user without backend-server validation by using google provide APIs. Please review the [document](https://developers.google.com/identity/sign-in/web/backend-auth#calling-the-tokeninfo-endpoint)  before using it.  |
 | auto_select           | Boolean |  false   |                             Enables automatic selection.                             |
 | cancel_on_tap_outside | Boolean |  false   |              Cancels the prompt if the user clicks outside the prompt.               |
 | context               | String  |  false   |             The title and words in the One Tap prompt     |
