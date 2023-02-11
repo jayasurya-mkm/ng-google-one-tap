@@ -53,12 +53,12 @@ import { NgOneTapService } from 'ng-google-one-tap';
 })
 export class DemoComponent implements OnInit {
 
-  userdetails;
-  constructor(private onetap: NgOneTapService) { }
+  userDetails;
+  constructor(private oneTap: NgOneTapService) { }
 
    ngOnInit() {
-        this.onetap.tapInitialize(); //Initialize OneTap, At intial time you can pass config  like this.onetap.tapInitialize(conif) here config is optional.
-        this.onetap.promtMoment.subscribe(res => {  // Subscribe the Tap Moment. following response options all have self explanatory. If you want more info pls refer official document below attached link.
+        this.oneTap.tapInitialize(); //Initialize OneTap, At intial time you can pass config  like this.oneTap.tapInitialize(conif) here config is optional.
+        this.oneTap.promtMoment.subscribe(res => {  // Subscribe the Tap Moment. following response options all have self explanatory. If you want more info pls refer official document below attached link.
            res.getDismissedReason(); 
            res.getMomentType();
            res.getNotDisplayedReason();
@@ -68,17 +68,17 @@ export class DemoComponent implements OnInit {
            res.isNotDisplayed();
            res.isSkippedMoment();
         });
-        this.onetap.oneTapCredentialResponse.subscribe(res => { // After continue with one tap JWT credentials response.
+        this.oneTap.oneTapCredentialResponse.subscribe(res => { // After continue with one tap JWT credentials response.
             console.log(res);
         });
-        this.onetap.authUserResponse.subscribe(res => {  // Use Auth validation by using google OAuth2 apis. Note: this one for testing and debugging purpose.
-            this.userdetails = res;
+        this.oneTap.authUserResponse.subscribe(res => {  // Use Auth validation by using google OAuth2 apis. Note: this one for testing and debugging purpose.
+            this.userDetails = res;
         });
 
    }
 
-    tapcancel() {
-        this.onetap.cancelTheTap();
+    tapCancel() {
+        this.oneTap.cancelTheTap();
     }
 
 }
@@ -89,17 +89,11 @@ export class DemoComponent implements OnInit {
 | Name                  | Type    | Required |                                     Description                                      |
 | --------------------- | ------- | :------: | :----------------------------------------------------------------------------------: |
 | client_id             | String  |   true   |                             Your application's client ID                             |
-| disable_exponential_cooldowntime | Boolean  |   false   |             when Close X one tap promt it's take reset/reshowing take some times this called Exponential cooldown. you can disable that using this option **Note: Recommended for development mode. If you want to use this feature in prod before pls check with official doc. link below.**                  |
-| authvalidate_by_googleapis   | Boolean  |  false   |          Validate the user whitout backend-server validation by using google provide APIs. **Note: Recommended for development mode. If pro mode need to validate JWT one tap retured crdentials from backend-server by using google-auth-library**   |
-| auto_select           | Boolean |  false   |                             Enables automatic selection.                             | null |
-| cancel_on_tap_outside | Boolean |  false   |              Cancels the prompt if the user clicks outside the prompt.               
+| disable_exponential_cooldowntime | Boolean  |   false   |             when Close X one tap promt it's take reset/reshowing take some times this called Exponential cool down. you can disable that using this option **Note: Recommended for development mode. If you want to use this feature in prod before pls check with official doc. link below.**                  |
+| authvalidate_by_googleapis   | Boolean  |  false   |          Validate the user without backend-server validation by using google provide APIs. **Note: Recommended for development mode. If pro mode need to validate JWT one tap returned credentials from backend-server by using google-auth-library**   |
+| auto_select           | Boolean |  false   |                             Enables automatic selection.                             |
+| cancel_on_tap_outside | Boolean |  false   |              Cancels the prompt if the user clicks outside the prompt.               |
 | context               | String  |  false   |             The title and words in the One Tap prompt     |
-| prompt_parent_id      | String  |  false   |        The DOM ID of the One Tap prompt container element    |
-| login_uri             | String  |  false   |    The URL of your login endpoint. The Sign In With Google button redirect UX mode uses this attribute.    |
-| nonce               | String  |  false   |             A random string for ID tokens     |
-| allowed_parent_origin               | String  |  false   |    The origins that are allowed to embed the intermediate iframe. One Tap will run in the intermediate iframe mode if this field presents. eg allowed_parent_origin: "https://example.com".    |
-| state_cookie_domain               | String  |  false   |     If you need to call One Tap in the parent domain and its subdomains, pass the parent domain to this field so that a single shared cookie is used     |
-| ux_mode               | String  |  false   |     The Sign In With Google button UX flow   |
 
 ## Resource
 
