@@ -1,6 +1,5 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgOneTapService } from 'ng-google-one-tap';
-// import { NgOneTapService } from '../../projects/ng-google-one-tap/src/lib/ng-google-one-tap.service';
 
 @Component({
     selector: 'app-root',
@@ -8,19 +7,17 @@ import { NgOneTapService } from 'ng-google-one-tap';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-    userdetails: any;
-    constructor(private onetap: NgOneTapService, private chg: ChangeDetectorRef) { }
+    userDetails: any;
+    constructor(private oneTap: NgOneTapService) { }
 
     ngOnInit() {
-        this.onetap.tapInitialize();
-        this.onetap.oneTapCredentialResponse.subscribe(res => {
-            console.log(res);
+        this.oneTap.tapInitialize();
+        this.oneTap.oneTapCredentialResponse.subscribe(res => {
         });
-        this.onetap.authUserResponse.subscribe(res => {
-            this.userdetails = res;
+        this.oneTap.authUserResponse.subscribe(res => {
+            this.userDetails = res;
         });
-        this.onetap.promtMoment.subscribe(res => {
-            console.log(res);
+        this.oneTap.promtMoment.subscribe(res => {
            res.getDismissedReason();
            res.getMomentType();
            res.getNotDisplayedReason();
@@ -33,10 +30,10 @@ export class AppComponent {
     }
 
     init() {
-        this.onetap.tapInitialize();
+        this.oneTap.tapInitialize();
     }
 
-    tapcancel() {
-        this.onetap.cancelTheTap()
+    tapCancel() {
+        this.oneTap.cancelTheTap()
     }
 }

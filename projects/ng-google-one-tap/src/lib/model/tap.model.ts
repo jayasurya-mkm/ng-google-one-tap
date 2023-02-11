@@ -9,6 +9,7 @@ export interface configuration extends customConfig {
     state_cookie_domain?: string;
     ux_mode?: string;
     allowed_parent_origin?: string;
+    [key: string]: any;
 }
 
 interface customConfig {

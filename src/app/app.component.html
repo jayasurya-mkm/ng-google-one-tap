@@ -1,6 +1,6 @@
 
-<h1 style="text-align: center;" *ngIf="!userdetails && !userdetails?.given_name" >user not sign in</h1>
-<h1 style="text-align: center;" *ngIf="!!userdetails && userdetails?.given_name" >user sign in</h1>
-<h1 style="text-align: center;">Welcome {{userdetails?.given_name}}</h1>
-<button (click)="init()">InitTap</button> <button (click)="tapcancel()">cancel</button>
+<h1 style="text-align: center;" *ngIf="!userDetails && !userDetails?.given_name" >user not sign in</h1>
+<h1 style="text-align: center;" *ngIf="!!userDetails && userDetails?.given_name" >user sign in</h1>
+<h1 style="text-align: center;">Welcome {{userDetails?.given_name}}</h1>
+<button (click)="init()">InitTap</button> <button (click)="tapCancel()">cancel</button>
 <router-outlet></router-outlet>

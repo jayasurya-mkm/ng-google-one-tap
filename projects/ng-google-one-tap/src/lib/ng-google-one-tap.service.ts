@@ -39,13 +39,13 @@ export class NgOneTapService {
 
     private tapRender(config: configuration) {
         const conf = {...this.envConfig, ...config };
-        if (!!conf?.disable_exponential_cooldowntime) {
+        if (conf?.disable_exponential_cooldowntime) {
             document.cookie = 'g_state' +'=;Path=/;';
         }
         window.google.accounts.id.initialize({
             ...conf, callback: (auth) => {
                 this.ngZone.run(() => {
-                    if (!!conf.authvalidate_by_googleapis) {
+                    if (conf.authvalidate_by_googleapis) {
                         const http = new XMLHttpRequest();
                         const url = `https://oauth2.googleapis.com/tokeninfo?id_token=${auth.credential}`;
                         http.open('GET', url);
